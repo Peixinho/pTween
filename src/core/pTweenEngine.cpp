@@ -59,6 +59,10 @@ namespace pTween {
 					pTobj->_StartTime = Timer + pTobj->_Delay;
 					pTobj->_EndTime = pTobj->_StartTime + pTobj->_Duration;
 					pTobj->_IsPlaying = true;
+
+					// CallBack
+					if (pTobj->_HasStartCallBackOBJ) pTobj->_OnStartOBJ();
+					if (pTobj->_HasStartCallBack) pTobj->_OnStart();
 				}
 
 				// Update Tween
@@ -89,6 +93,11 @@ namespace pTween {
 						{
 							// Tween
 							*pTobj->_Data = pTweenEquations::Equation(pTobj->_Transition,Timer-(pTobj->_StartTime+pTobj->_PauseTime),pTobj->_InitValue,pTobj->_EndValue-pTobj->_InitValue,pTobj->_Duration);
+							
+							// CallBack
+							if (pTobj->_HasUpdateCallBackOBJ) pTobj->_OnUpdateOBJ();
+							if (pTobj->_HasUpdateCallBack) pTobj->_OnUpdate();
+
 						} else if (Timer>pTobj->_EndTime+pTobj->_PauseTime)
 						{
 							if (pTobj->_YoYo)
@@ -101,11 +110,18 @@ namespace pTween {
 								pTobj->_IsPlaying = false;
 								pTobj->_StartPlaying = true;
 								pTobj->_YoYo = false;
+								pTobj->_HasStartCallBackOBJ = false;
+								pTobj->_HasStartCallBack = false;
 							}
 							else {
 
+								// End CallBack
+								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();
+								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();
+
 								// Play Chain Tween
 								if (pTobj->_HasChain) pTobj->_ChainTween->Play();
+
 								// Delete Tween
 								else pTobj->Dispose();
 								// Remove from List

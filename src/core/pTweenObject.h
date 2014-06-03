@@ -10,6 +10,7 @@
 #define	PTWEENOBJECT_H
 
 #include "pTweenEngine.h"
+#include "../signals/Signal.h"
 
 namespace pTween {
 
@@ -52,6 +53,47 @@ namespace pTween {
 
 				// Yoyo
 				pTweenObject* Yoyo();
+
+				// Set CallBacks
+				template< class X, class Y >
+				pTweenObject* OnStartCallBack( Y * obj, void (X::*func)() )
+				{
+					_HasStartCallBackOBJ = true;
+					_OnStart.Connect(obj,func);
+					return this;
+				}
+				template< class X, class Y >
+				pTweenObject* OnUpdateCallBack( Y * obj, void (X::*func)() )
+				{
+					_HasUpdateCallBackOBJ = true;
+					_OnUpdate.Connect(obj,func);
+					return this;
+				}
+				template< class X, class Y >
+				pTweenObject* OnEndCallBack( Y * obj, void (X::*func)() )
+				{
+					_HasEndCallBackOBJ = true;
+					_OnEnd.Connect(obj,func);
+					return this;
+				}
+				pTweenObject* OnStartCallBack(void(func)())
+				{
+					_HasStartCallBack = true;
+					_OnStart.Bind(func);
+					return this;
+				}
+				pTweenObject* OnUpdateCallBack(void(func)())
+				{
+					_HasUpdateCallBack = true;
+					_OnUpdate.Bind(func);
+					return this;
+				}
+				pTweenObject* OnEndCallBack(void(func)())
+				{
+					_HasEndCallBack = true;
+					_OnEnd.Bind(func);
+					return this;
+				}
 
 				// Delete
 				void Dispose();
@@ -102,6 +144,21 @@ namespace pTween {
 				// Chain Parent
 				bool _HasParent;
 				pTweenObject* _ChainParent;
+
+				// CallBacks
+				Gallant::Signal0<void> _OnStartOBJ;
+				Gallant::Signal0<void> _OnUpdateOBJ;
+				Gallant::Signal0<void> _OnEndOBJ;
+				Gallant::Delegate0<void> _OnStart;
+				Gallant::Delegate0<void> _OnUpdate;
+				Gallant::Delegate0<void> _OnEnd;
+
+				bool _HasStartCallBack;
+				bool _HasUpdateCallBack;
+				bool _HasEndCallBack;
+				bool _HasStartCallBackOBJ;
+				bool _HasUpdateCallBackOBJ;
+				bool _HasEndCallBackOBJ;
 
 		};
 

@@ -19,23 +19,29 @@ namespace pTween {
 			_Data				= target;
 
 			// Default Values
-			_StartPlaying 		= false;
-			_Pause 				= false;
-			_IsPlaying			= false;
-			_IsPaused			= false;
-			_PauseTime			= 0;
-			_PauseStartTime		= 0;
-			_Transition			= 0; // Default Transition is Linear
-			_InitValue			= *(float*)_Data;
-			_Delay				= 0;
-			_YoYo				= false;
-			_HasChain			= false;
-			_ChainTween			= NULL;
-			_HasParent			= false;
-			_ChainParent		= NULL;
-			__Delay				= 0;
-			__YoYo				= 0;
-			__InitValue			= *(float*)_Data;
+			_StartPlaying 			= false;
+			_Pause 					= false;
+			_IsPlaying				= false;
+			_IsPaused				= false;
+			_PauseTime				= 0;
+			_PauseStartTime			= 0;
+			_Transition				= 0; // Default Transition is Linear
+			_InitValue				= *(float*)_Data;
+			_Delay					= 0;
+			_YoYo					= false;
+			_HasChain				= false;
+			_ChainTween				= NULL;
+			_HasParent				= false;
+			_ChainParent			= NULL;
+			_HasStartCallBack		= false;
+			_HasUpdateCallBack		= false;
+			_HasEndCallBack			= false;
+			_HasStartCallBackOBJ	= false;
+			_HasUpdateCallBackOBJ	= false;
+			_HasEndCallBackOBJ		= false;
+			__Delay					= 0;
+			__YoYo					= 0;
+			__InitValue				= *(float*)_Data;
 		}
 
 		// Initial Value
@@ -134,28 +140,34 @@ namespace pTween {
 		pTweenObject::pTweenObject(float* &otherTarget, pTweenObject* Parent)
 		{
 			// Parent Data
-			_HasParent			= true;
-			_ChainParent		= Parent;
+			_HasParent				= true;
+			_ChainParent			= Parent;
 
 			// Target
-			_Data				= otherTarget;
+			_Data					= otherTarget;
 
 			// Default Values
-			_StartPlaying 		= false;
-			_Pause 				= false;
-			_IsPlaying			= false;
-			_IsPaused			= false;
-			_PauseTime			= 0;
-			_PauseStartTime		= 0;
-			_Transition			= 0; // Default Transition is Linear
-			_InitValue			= *(float*)_Data;
-			_Delay				= 0;
-			_YoYo				= false;
-			_HasChain			= false;
-			_ChainTween			= NULL;
-			__Delay				= 0;
-			__YoYo				= 0;
-			__InitValue			= *(float*)_Data;
+			_StartPlaying 			= false;
+			_Pause 					= false;
+			_IsPlaying				= false;
+			_IsPaused				= false;
+			_PauseTime				= 0;
+			_PauseStartTime			= 0;
+			_Transition				= 0; // Default Transition is Linear
+			_InitValue				= *(float*)_Data;
+			_Delay					= 0;
+			_YoYo					= false;
+			_HasChain				= false;
+			_ChainTween				= NULL;
+			_HasStartCallBack		= false;
+			_HasUpdateCallBack		= false;
+			_HasEndCallBack			= false;
+			_HasStartCallBackOBJ	= false;
+			_HasUpdateCallBackOBJ	= false;
+			_HasEndCallBackOBJ		= false;
+			__Delay					= 0;
+			__YoYo					= 0;
+			__InitValue				= *(float*)_Data;
 		}
 
 		// Destructor
