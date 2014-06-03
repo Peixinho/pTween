@@ -4,7 +4,7 @@
 solution "pTween"
  
     -- Make Directories
-    os.mkdir("bin");
+    os.mkdir("libs");
     os.mkdir("build");
 
     newoption {
@@ -55,5 +55,3 @@ solution "pTween"
 
             flags { "Optimize" }
             targetname(libName)
-
-end;

@@ -15,6 +15,8 @@ namespace pTween {
 
 	namespace Engine {
 
+		class pTweenEngine;
+
 		class PTWEEN_API pTweenObject {
 
 			friend class pTweenEngine;

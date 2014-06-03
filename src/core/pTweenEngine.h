@@ -40,6 +40,8 @@ namespace pTween {
 
 	namespace Engine {
 
+		class pTweenObject;
+
 		class PTWEEN_API pTweenEngine {
 
 			friend class pTweenObject;
