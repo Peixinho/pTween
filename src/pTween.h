@@ -11,6 +11,7 @@
 
 #include "core\pTweenObject.h"
 #include "core\pTweenEngine.h"
+#include "core\pTweenTransitions.h"
 
 typedef pTween::Engine::pTweenObject* pTweenObject;
 
