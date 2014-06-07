@@ -16,7 +16,7 @@ namespace pTween {
 		pTweenObject::pTweenObject(float* &target)
 		{
 			// Target
-			_Data				= target;
+			_Data					= target;
 
 			// Default Values
 			_StartPlaying 			= false;
@@ -26,7 +26,8 @@ namespace pTween {
 			_PauseTime				= 0;
 			_PauseStartTime			= 0;
 			_Transition				= 0; // Default Transition is Linear
-			_InitValue				= *(float*)_Data;
+			_InitValue				= 0;
+			_InitValueSet			= false;
 			_Delay					= 0;
 			_YoYo					= false;
 			_HasChain				= false;
@@ -48,6 +49,7 @@ namespace pTween {
 		pTweenObject* pTweenObject::From(const float &initValue)
 		{
 			_InitValue = __InitValue = initValue;
+			_InitValueSet = true;
 			return this;
 		}
 		

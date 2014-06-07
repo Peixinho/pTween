@@ -63,6 +63,12 @@ namespace pTween {
 					// CallBack
 					if (pTobj->_HasStartCallBackOBJ) pTobj->_OnStartOBJ();
 					if (pTobj->_HasStartCallBack) pTobj->_OnStart();
+
+					if (!pTobj->_InitValueSet) 
+					{
+						pTobj->_InitValue = *pTobj->_Data;
+						pTobj->_InitValueSet = true;
+					}
 				}
 
 				// Update Tween
