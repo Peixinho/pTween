@@ -9,9 +9,9 @@
 #ifndef PTWEEN_H
 #define	PTWEEN_H
 
-#include "core\pTweenObject.h"
-#include "core\pTweenEngine.h"
-#include "core\pTweenTransitions.h"
+#include "pTween\core\pTweenObject.h"
+#include "pTween\core\pTweenEngine.h"
+#include "pTween\core\pTweenTransitions.h"
 
 typedef pTween::Engine::pTweenObject* pTweenObject;
 
