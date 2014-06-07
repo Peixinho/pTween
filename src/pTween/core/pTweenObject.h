@@ -161,6 +161,9 @@ namespace pTween {
 				bool _HasUpdateCallBackOBJ;
 				bool _HasEndCallBackOBJ;
 
+				// Fix for small numbers
+				unsigned int _decim;
+
 		};
 
 	};

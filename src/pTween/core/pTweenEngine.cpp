@@ -69,6 +69,21 @@ namespace pTween {
 						pTobj->_InitValue = *pTobj->_Data;
 						pTobj->_InitValueSet = true;
 					}
+
+					// Fixing Small Numbers Issue
+						
+						// Get Smaller Input Value
+						float small = pTobj->_InitValue;
+						if (pTobj->_InitValue > pTobj->_EndValue)
+						{
+							small = pTobj->_EndValue;
+						}
+						// Getting Decimal Factor
+						while(fabs(small*pTobj->_decim)<1.f)
+						{
+							pTobj->_decim*=10;
+						}
+
 				}
 
 				// Update Tween
@@ -98,7 +113,7 @@ namespace pTween {
 						if (Timer>pTobj->_StartTime && Timer<pTobj->_EndTime+pTobj->_PauseTime)
 						{
 							// Tween
-							*pTobj->_Data = pTweenEquations::Equation(pTobj->_Transition,Timer-(pTobj->_StartTime+pTobj->_PauseTime),pTobj->_InitValue,pTobj->_EndValue-pTobj->_InitValue,pTobj->_Duration);
+							*pTobj->_Data = (pTweenEquations::Equation(pTobj->_Transition,Timer-(pTobj->_StartTime-pTobj->_PauseTime),pTobj->_InitValue*pTobj->_decim,(pTobj->_EndValue*pTobj->_decim)-(pTobj->_InitValue*pTobj->_decim),pTobj->_Duration)/pTobj->_decim);
 							
 							// CallBack
 							if (pTobj->_HasUpdateCallBackOBJ) pTobj->_OnUpdateOBJ();
