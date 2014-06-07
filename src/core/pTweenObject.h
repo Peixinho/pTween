@@ -59,21 +59,21 @@ namespace pTween {
 				pTweenObject* OnStartCallBack( Y * obj, void (X::*func)() )
 				{
 					_HasStartCallBackOBJ = true;
-					_OnStart.Connect(obj,func);
+					_OnStartOBJ.Connect(obj,func);
 					return this;
 				}
 				template< class X, class Y >
 				pTweenObject* OnUpdateCallBack( Y * obj, void (X::*func)() )
 				{
 					_HasUpdateCallBackOBJ = true;
-					_OnUpdate.Connect(obj,func);
+					_OnUpdateOBJ.Connect(obj,func);
 					return this;
 				}
 				template< class X, class Y >
 				pTweenObject* OnEndCallBack( Y * obj, void (X::*func)() )
 				{
 					_HasEndCallBackOBJ = true;
-					_OnEnd.Connect(obj,func);
+					_OnEndOBJ.Connect(obj,func);
 					return this;
 				}
 				pTweenObject* OnStartCallBack(void(func)())
