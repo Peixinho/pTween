@@ -74,7 +74,7 @@ namespace pTween {
 						
 						// Get Smaller Input Value
 						float small = pTobj->_InitValue;
-						if (pTobj->_InitValue > pTobj->_EndValue)
+						if (fabs(pTobj->_InitValue) > fabs(pTobj->_EndValue))
 						{
 							small = pTobj->_EndValue;
 						}
