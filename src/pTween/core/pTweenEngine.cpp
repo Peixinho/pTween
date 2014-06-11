@@ -76,14 +76,14 @@ namespace pTween {
 						float small = pTobj->_InitValue;
 						if (fabs(pTobj->_InitValue) > fabs(pTobj->_EndValue))
 						{
-							small = pTobj->_EndValue;
+							if (pTobj->_EndValue!=0.0)
+								small = pTobj->_EndValue;
 						}
-						// Getting Decimal Factor
-						while(fabs(small*pTobj->_decim)<1.f)
-						{
-							pTobj->_decim*=10;
-						}
-
+						if (small!=0.f) // Getting Decimal Factor
+							while(fabs(small*pTobj->_decim)<1.f)
+							{
+								pTobj->_decim*=10;
+							}
 				}
 
 				// Update Tween
