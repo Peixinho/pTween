@@ -20,31 +20,31 @@ namespace pTween {
 	using namespace Engine;
 
 	// Add new Tween
-	pTweenObject* pTween(float* target)
+	inline pTweenObject* pTween(float* target)
 	{
 		return new pTweenObject(target);
 	}
 
 	// pTween Step
-	void pTweenStep(const float &time)
+	inline void pTweenStep(const float &time)
 	{
 		pTweenEngine::Step(time);
 	}
 
 	// Pause All
-	void pTweenPauseAllTweens()
+	inline void pTweenPauseAllTweens()
 	{
 		pTweenEngine::PauseAll();
 	}
 
 	// Resume
-	void pTweenResumeAllTweens()
+	inline void pTweenResumeAllTweens()
 	{
 		pTweenEngine::ResumeAll();
 	}
 
 	// Remove All Tweens
-	void pTweenDeleteAllTweens()
+	inline void pTweenDeleteAllTweens()
 	{
 		pTweenEngine::DeleteAll();
 	}
