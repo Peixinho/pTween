@@ -6,8 +6,8 @@
 // Description : pTween Engine
 //============================================================================
 
-#include "pTweenEngine.h"
-#include "pTweenEquations.h"
+#include <pTween/core/pTweenEngine.h>
+#include <pTween/core/pTweenEquations.h>
 
 namespace pTween {
 

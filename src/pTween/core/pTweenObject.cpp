@@ -6,7 +6,7 @@
 // Description : pTween Object
 //============================================================================
 
-#include "pTweenObject.h"
+#include <pTween/core/pTweenObject.h>
 
 namespace pTween {
 

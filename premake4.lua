@@ -27,6 +27,8 @@ solution "pTween"
     rootdir = "."
     libName = "pTween"
 
+    includedirs { "include/" }
+
     project "pTween"
         targetdir "libs"
         
@@ -37,7 +39,7 @@ solution "pTween"
         end
 
         language "C++"
-        files { "src/**.h", "src/**.cpp" }
+        files { "src/**.h", "src/**.cpp", "include/**.h", "include/**.cpp" }
 
 		if os.get() == "windows" and _OPTIONS["bin"]=="shared" then
 			defines({"_EXPORT"})
