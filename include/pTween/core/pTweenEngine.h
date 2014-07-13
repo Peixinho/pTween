@@ -51,6 +51,7 @@ namespace pTween {
 				static void PauseAll();
 				static void ResumeAll();
 				static void DeleteAll();
+				static void Destroy(pTweenObject* pTobj);
 			private:
 				static std::list<pTweenObject*> _pTweenObjects;
 				static float Timer;

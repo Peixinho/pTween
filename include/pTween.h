@@ -48,6 +48,12 @@ namespace pTween {
 	{
 		pTweenEngine::DeleteAll();
 	}
+
+	// Destroy Tween
+	inline void Destroy(pTweenObject* pTobj)
+	{
+		pTweenEngine::Destroy(pTobj);
+	}	
 };
 
 #endif /* PTWEEN_H */

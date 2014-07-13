@@ -44,6 +44,20 @@ namespace pTween {
 			}
 		}
 
+		void pTweenEngine::Destroy(pTweenObject* pTobj)
+		{
+			for (std::list<pTweenObject*>::iterator i=_pTweenObjects.begin();i!=_pTweenObjects.end();i++)
+			{
+				if ((*i)==pTobj)
+				{
+					(*i)->Dispose();
+					// Remove from List
+					i = _pTweenObjects.erase(i);
+				}
+				if (i==_pTweenObjects.end()) break;
+			}
+		}
+
 		void pTweenEngine::Step(const float &Time)
 		{
 			// Save Time
