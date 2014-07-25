@@ -95,9 +95,6 @@ namespace pTween {
 					return this;
 				}
 
-				// Delete
-				void Dispose();
-
 				// Chain Animation
 				pTweenObject* Chain(float* othertarget);
 
@@ -106,6 +103,9 @@ namespace pTween {
 			private:
 				// Constructor
 				pTweenObject(float* &target, pTweenObject* Parent);
+
+				// Delete
+				void Dispose();
 
 				// Parameters
 				float* _Data;

@@ -62,7 +62,6 @@ namespace pTween {
 		{
 			// Save Time
 			Timer = Time;
-
 			for (std::list<pTweenObject*>::iterator i=_pTweenObjects.begin();i!=_pTweenObjects.end();i++)
 			{
 				pTweenObject* pTobj = (*i);
@@ -86,18 +85,18 @@ namespace pTween {
 
 					// Fixing Small Numbers Issue
 						
-						// Get Smaller Input Value
-						float small = pTobj->_InitValue;
-						if (fabs(pTobj->_InitValue) > fabs(pTobj->_EndValue))
+					// Get Smaller Input Value
+					float small = pTobj->_InitValue;
+					if (fabs(pTobj->_InitValue) > fabs(pTobj->_EndValue))
+					{
+						if (pTobj->_EndValue!=0.0)
+							small = pTobj->_EndValue;
+					}
+					if (small!=0.f) // Getting Decimal Factor
+						while(fabs(small*pTobj->_decim)<1.f)
 						{
-							if (pTobj->_EndValue!=0.0)
-								small = pTobj->_EndValue;
+							pTobj->_decim*=10;
 						}
-						if (small!=0.f) // Getting Decimal Factor
-							while(fabs(small*pTobj->_decim)<1.f)
-							{
-								pTobj->_decim*=10;
-							}
 				}
 
 				// Update Tween
@@ -120,10 +119,8 @@ namespace pTween {
 					}
 
 					// Tween if still in time
-					if (pTobj->_IsPaused)
+					if (!pTobj->_IsPaused)
 					{
-					
-					} else {
 						if (Timer>pTobj->_StartTime && Timer<pTobj->_EndTime+pTobj->_PauseTime)
 						{
 							// Tween
@@ -153,6 +150,7 @@ namespace pTween {
 								// End CallBack
 								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();
 								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();
+								*pTobj->_Data = pTobj->_EndValue;
 
 								// Play Chain Tween
 								if (pTobj->_HasChain) pTobj->_ChainTween->Play();
