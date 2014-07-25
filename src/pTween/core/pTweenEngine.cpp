@@ -147,10 +147,11 @@ namespace pTween {
 							}
 							else {
 
+								// Set End Value
+								*pTobj->_Data = pTobj->_EndValue;
 								// End CallBack
 								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();
 								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();
-								*pTobj->_Data = pTobj->_EndValue;
 
 								// Play Chain Tween
 								if (pTobj->_HasChain) pTobj->_ChainTween->Play();
