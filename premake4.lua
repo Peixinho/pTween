@@ -17,11 +17,26 @@ solution "pTween"
         }
     }
 
+    newoption {
+       trigger     = "x32",
+       description = "Build for 32bit - Default Option"
+    }
+
+    newoption {
+       trigger     = "x64",
+       description = "Build for 64bit"
+    }
+
+    buildArch = "x32"
+    if _OPTIONS["x64"] then
+        buildArch = "x64"
+    end
+
     ------------------------------------------------------------------
     -- setup common settings
     ------------------------------------------------------------------
     configurations { "Debug", "Release" }
-    platforms { "x32" }
+    platforms { buildArch }
     location "build"
 
     rootdir = "."
