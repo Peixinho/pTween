@@ -97,6 +97,11 @@ namespace pTween {
 						{
 							pTobj->_decim*=10;
 						}
+
+					while(pTobj->_Duration*pTobj->_decimTime<1.f)
+					{
+						pTobj->_decimTime*=10;
+					}
 				}
 
 				// Update Tween
@@ -124,7 +129,13 @@ namespace pTween {
 						if (Timer>pTobj->_StartTime && Timer<pTobj->_EndTime+pTobj->_PauseTime)
 						{
 							// Tween
-							*pTobj->_Data = (pTweenEquations::Equation(pTobj->_Transition,Timer-(pTobj->_StartTime-pTobj->_PauseTime),pTobj->_InitValue*pTobj->_decim,(pTobj->_EndValue*pTobj->_decim)-(pTobj->_InitValue*pTobj->_decim),pTobj->_Duration)/pTobj->_decim);
+							*pTobj->_Data = 
+							(pTweenEquations::Equation(
+								pTobj->_Transition,
+								Timer*pTobj->_decimTime -(pTobj->_StartTime-pTobj->_PauseTime)*pTobj->_decimTime,
+								pTobj->_InitValue*pTobj->_decim,
+								(pTobj->_EndValue*pTobj->_decim)-(pTobj->_InitValue*pTobj->_decim),
+								pTobj->_Duration*pTobj->_decimTime)/pTobj->_decim);
 							
 							// CallBack
 							if (pTobj->_HasUpdateCallBackOBJ) pTobj->_OnUpdateOBJ();
@@ -149,6 +160,7 @@ namespace pTween {
 
 								// Set End Value
 								*pTobj->_Data = pTobj->_EndValue;
+								
 								// End CallBack
 								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();
 								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();

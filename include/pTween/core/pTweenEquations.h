@@ -23,7 +23,7 @@ namespace pTween {
     
         class PTWEEN_API pTweenEquations {
         public:
-            static float Equation(unsigned int Transition, float Time, int Init, float Change, float Duration)
+            static float Equation(unsigned int Transition, float Time, float Init, float Change, float Duration)
             {
 
                 float p = 0, a = 0, s;

@@ -44,6 +44,7 @@ namespace pTween {
 			__YoYo					= 0;
 			__InitValue				= *(float*)_Data;
 			_decim					= 1;
+			_decimTime				= 1;
 		}
 
 		// Initial Value
@@ -157,6 +158,7 @@ namespace pTween {
 			_PauseTime				= 0;
 			_PauseStartTime			= 0;
 			_Transition				= 0; // Default Transition is Linear
+			if (!_InitValueSet) 
 			_InitValue				= *(float*)_Data;
 			_Delay					= 0;
 			_YoYo					= false;
@@ -170,8 +172,8 @@ namespace pTween {
 			_HasEndCallBackOBJ		= false;
 			__Delay					= 0;
 			__YoYo					= 0;
-			__InitValue				= *(float*)_Data;
 			_decim					= 1;
+			_decimTime					= 1;
 		}
 
 		// Destructor

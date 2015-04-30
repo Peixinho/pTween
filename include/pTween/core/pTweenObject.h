@@ -163,6 +163,7 @@ namespace pTween {
 
 				// Fix for small numbers
 				unsigned int _decim;
+				unsigned int _decimTime;
 
 		};
 
