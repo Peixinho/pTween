@@ -132,7 +132,7 @@ namespace pTween {
 							*pTobj->_Data = 
 							(pTweenEquations::Equation(
 								pTobj->_Transition,
-								Timer*pTobj->_decimTime -(pTobj->_StartTime-pTobj->_PauseTime)*pTobj->_decimTime,
+								Timer*pTobj->_decimTime - (pTobj->_StartTime-pTobj->_PauseTime)*pTobj->_decimTime,
 								pTobj->_InitValue*pTobj->_decim,
 								(pTobj->_EndValue*pTobj->_decim)-(pTobj->_InitValue*pTobj->_decim),
 								pTobj->_Duration*pTobj->_decimTime)/pTobj->_decim);
