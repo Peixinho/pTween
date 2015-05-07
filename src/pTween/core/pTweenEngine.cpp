@@ -92,11 +92,13 @@ namespace pTween {
 						if (pTobj->_EndValue!=0.0)
 							small = pTobj->_EndValue;
 					}
-					if (small!=0.f) // Getting Decimal Factor
+					if (roundf(small*100)/100>0.0f) // Getting Decimal Factor
+					{
 						while(fabs(small*pTobj->_decim)<1.f)
 						{
 							pTobj->_decim*=10;
 						}
+					}
 
 					while(pTobj->_Duration*pTobj->_decimTime<1.f)
 					{
@@ -166,7 +168,9 @@ namespace pTween {
 								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();
 
 								// Play Chain Tween
-								if (pTobj->_HasChain) pTobj->_ChainTween->Play();
+								if (pTobj->_HasChain)
+									pTobj->_ChainTween->Play();
+
 
 								// Delete Tween
 								else pTobj->Dispose();
