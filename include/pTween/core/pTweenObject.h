@@ -114,6 +114,7 @@ namespace pTween {
 				float _Duration;
 				unsigned int _Transition;
 				bool _InitValueSet;
+				bool _Ended;
 
 				bool _StartPlaying;
 				bool _Pause;

@@ -146,6 +146,8 @@ namespace pTween {
 							}
 							else {
 
+								pTobj->_Ended = true;
+
 								// Set End Value
 								if (pTobj->_YoYoPlaying)
 									*pTobj->_Data = pTobj->_InitValue;

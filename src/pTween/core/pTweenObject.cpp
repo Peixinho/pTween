@@ -28,6 +28,7 @@ namespace pTween {
 			_Transition				= 0; // Default Transition is Linear
 			_InitValue				= 0;
 			_InitValueSet			= false;
+			_Ended					= false;
 			_Delay					= 0;
 			_YoYo					= false;
 			_HasChain				= false;
@@ -78,9 +79,12 @@ namespace pTween {
 		// Play
 		pTweenObject* pTweenObject::Play()
 		{
-			_StartPlaying = true;
-			_IsPlaying = false;
-			pTweenEngine::_pTweenObjects.push_back(this);
+			if (_ChainParent == NULL || (_ChainParent !=NULL && _ChainParent->_Ended))
+			{
+				_StartPlaying = true;
+				_IsPlaying = false;
+				pTweenEngine::_pTweenObjects.push_back(this);
+			}
 			return this;
 		}
 
@@ -159,6 +163,7 @@ namespace pTween {
 			_Transition				= 0; // Default Transition is Linear
 			if (!_InitValueSet) 
 			_InitValue				= *(float*)_Data;
+			_Ended					= false;
 			_Delay					= 0;
 			_YoYo					= false;
 			_HasChain				= false;
