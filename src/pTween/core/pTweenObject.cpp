@@ -43,8 +43,7 @@ namespace pTween {
 			__Delay					= 0;
 			__YoYo					= 0;
 			__InitValue				= *(float*)_Data;
-			_decim					= 1;
-			_decimTime				= 1;
+			_YoYoPlaying			= false;
 		}
 
 		// Initial Value
@@ -172,8 +171,7 @@ namespace pTween {
 			_HasEndCallBackOBJ		= false;
 			__Delay					= 0;
 			__YoYo					= 0;
-			_decim					= 1;
-			_decimTime					= 1;
+			_YoYoPlaying			= false;
 		}
 
 		// Destructor

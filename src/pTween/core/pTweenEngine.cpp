@@ -15,7 +15,7 @@ namespace pTween {
 				
 		// List of Tween Objects		
 		std::list<pTweenObject*> pTweenEngine::_pTweenObjects; 
-		float pTweenEngine::Timer;
+		double pTweenEngine::Timer;
 
 		void pTweenEngine::PauseAll()
 		{
@@ -58,7 +58,7 @@ namespace pTween {
 			}
 		}
 
-		void pTweenEngine::Step(const float &Time)
+		void pTweenEngine::Step(const double &Time)
 		{
 			// Save Time
 			Timer = Time;
@@ -70,7 +70,6 @@ namespace pTween {
 				if (!pTobj->_IsPlaying && pTobj->_StartPlaying)
 				{
 					pTobj->_StartTime = Timer + pTobj->_Delay;
-					pTobj->_EndTime = pTobj->_StartTime + pTobj->_Duration;
 					pTobj->_IsPlaying = true;
 
 					// CallBack
@@ -81,28 +80,6 @@ namespace pTween {
 					{
 						pTobj->_InitValue = *pTobj->_Data;
 						pTobj->_InitValueSet = true;
-					}
-
-					// Fixing Small Numbers Issue
-						
-					// Get Smaller Input Value
-					float small = pTobj->_InitValue;
-					if (fabs(pTobj->_InitValue) > fabs(pTobj->_EndValue))
-					{
-						if (pTobj->_EndValue!=0.0)
-							small = pTobj->_EndValue;
-					}
-					if (roundf(small*100)/100>0.0f) // Getting Decimal Factor
-					{
-						while(fabs(small*pTobj->_decim)<1.f)
-						{
-							pTobj->_decim*=10;
-						}
-					}
-
-					while(pTobj->_Duration*pTobj->_decimTime<1.f)
-					{
-						pTobj->_decimTime*=10;
 					}
 				}
 
@@ -128,30 +105,39 @@ namespace pTween {
 					// Tween if still in time
 					if (!pTobj->_IsPaused)
 					{
-						if (Timer>pTobj->_StartTime && Timer<pTobj->_EndTime+pTobj->_PauseTime)
+
+						// Calculate Actual Time
+						pTobj->_Timer = Timer - pTobj->_StartTime - pTobj->_PauseTime;
+						
+							// Invert time for yoyo
+						if (pTobj->_YoYoPlaying) 
+							pTobj->_Timer = pTobj->_Duration - pTobj->_Timer;
+
+						if (Timer>pTobj->_StartTime && Timer<pTobj->_StartTime+pTobj->_Duration+pTobj->_PauseTime)
 						{
 							// Tween
-							*pTobj->_Data = 
-							(pTweenEquations::Equation(
-								pTobj->_Transition,
-								Timer*pTobj->_decimTime - (pTobj->_StartTime-pTobj->_PauseTime)*pTobj->_decimTime,
-								pTobj->_InitValue*pTobj->_decim,
-								(pTobj->_EndValue*pTobj->_decim)-(pTobj->_InitValue*pTobj->_decim),
-								pTobj->_Duration*pTobj->_decimTime)/pTobj->_decim);
-							
+							*pTobj->_Data =
+								pTweenEquations::Equation(
+									pTobj->_Transition,
+									pTobj->_Timer,
+									pTobj->_InitValue,
+									pTobj->_EndValue - pTobj->_InitValue,
+									pTobj->_Duration);
+
 							// CallBack
 							if (pTobj->_HasUpdateCallBackOBJ) pTobj->_OnUpdateOBJ();
 							if (pTobj->_HasUpdateCallBack) pTobj->_OnUpdate();
 
-						} else if (Timer>pTobj->_EndTime+pTobj->_PauseTime)
+						} else if (Timer>pTobj->_StartTime+pTobj->_Duration+pTobj->_PauseTime)
 						{
 							if (pTobj->_YoYo)
 							{
+								pTobj->_YoYoPlaying = true;
+								
 								// Set new Tween
-								pTobj->_InitValue=pTobj->__EndValue;
-								pTobj->_EndValue=pTobj->__InitValue;
 								pTobj->_Delay = 0;
 								pTobj->_PauseTime = 0;
+								pTobj->_StartTime = Timer;
 								pTobj->_IsPlaying = false;
 								pTobj->_StartPlaying = true;
 								pTobj->_YoYo = false;
@@ -161,7 +147,12 @@ namespace pTween {
 							else {
 
 								// Set End Value
-								*pTobj->_Data = pTobj->_EndValue;
+								if (pTobj->_YoYoPlaying)
+									*pTobj->_Data = pTobj->_InitValue;
+								else
+									*pTobj->_Data = pTobj->_EndValue;
+
+								pTobj->_YoYoPlaying = false;
 								
 								// End CallBack
 								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();

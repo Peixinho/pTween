@@ -47,14 +47,14 @@ namespace pTween {
 			friend class pTweenObject;
 
 			public:
-				static void Step(const float &Time);
+				static void Step(const double &Time);
 				static void PauseAll();
 				static void ResumeAll();
 				static void DeleteAll();
 				static void Destroy(pTweenObject* pTobj);
 			private:
 				static std::list<pTweenObject*> _pTweenObjects;
-				static float Timer;
+				static double Timer;
 		};
 
 	};

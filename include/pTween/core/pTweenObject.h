@@ -9,8 +9,8 @@
 #ifndef PTWEENOBJECT_H
 #define	PTWEENOBJECT_H
 
-#include "pTweenEngine.h"
-#include "../signals/Signal.h"
+#include <pTween/core/pTweenEngine.h>
+#include <pTween/signals/Signal.h>
 
 namespace pTween {
 
@@ -121,11 +121,14 @@ namespace pTween {
 				bool _IsPaused;
 
 				// Timers
-				float _StartTime;
-				float _EndTime;
-				float _PauseStartTime;
-				float _PauseTime;
+				double _StartTime;
+				double _PauseStartTime;
+				double _PauseTime;
 				float _Delay;
+
+				bool _YoYoPlaying;
+				double _Timer;
+
 
 				// Yoyo
 				bool _YoYo;
@@ -160,10 +163,6 @@ namespace pTween {
 				bool _HasStartCallBackOBJ;
 				bool _HasUpdateCallBackOBJ;
 				bool _HasEndCallBackOBJ;
-
-				// Fix for small numbers
-				unsigned int _decim;
-				unsigned int _decimTime;
 
 		};
 
