@@ -2,7 +2,7 @@ pTween Engine
 
 The MIT License
 
-Copyright (c) 2010-2013 Pyros3D authors
+Copyright (c) 2010-2013 pTween authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
