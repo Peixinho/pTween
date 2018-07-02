@@ -2,7 +2,7 @@
 // Name        : pTweenEquations.h
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Equations
 //============================================================================
 
@@ -20,7 +20,7 @@
 namespace pTween {
 
     namespace Engine {
-    
+
         class PTWEEN_API pTweenEquations {
         public:
             static float Equation(unsigned int Transition, double Time, float Init, float Change, float Duration)

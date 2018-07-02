@@ -12,10 +12,10 @@ A Really Small and Lightweight Tween Engine
 
 			Tween using YoYo - Plays Inverse Tween after the First
 			pTween(&x)->From(5)->To(40)->Duration(3)->Transition(pTween::pTweenTransitions::EaseInOutCirc)->Yoyo()->Play();
-			
+
 			Keeping Pointer
 			pTweenObject tween = pTween(&x)->To(100)->Duration(10);
-			Playing when needed			
+			Playing when needed
 			tween->Play();
 			... and using it to remove it
 			tween->Dispose();
@@ -23,7 +23,7 @@ A Really Small and Lightweight Tween Engine
 			Chain - Plays an animation after another
 			pTween(&x)->From(5)->To(200)->Duration(8)->Play()->Chain(&y)->To(10)->Duration(5);
 
-			Keep in ming that using chain, when keeping a pointer, will store the last tween object created.			
+			Keep in ming that using chain, when keeping a pointer, will store the last tween object created.
 			For safer usage:
 			pTweenObject tween = pTween(&x)->From(5)->To(200)->Duration(8)->Play();
 			tween->Chain(&y)->To(10)->Duration(5);

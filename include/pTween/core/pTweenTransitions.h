@@ -2,7 +2,7 @@
 // Name        : pTweenTransitions.h
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Transitions
 //============================================================================
 

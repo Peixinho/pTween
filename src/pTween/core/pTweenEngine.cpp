@@ -2,7 +2,7 @@
 // Name        : pTweenEngine.cpp
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Engine
 //============================================================================
 
@@ -12,9 +12,9 @@
 namespace pTween {
 
 	namespace Engine {
-				
-		// List of Tween Objects		
-		std::list<pTweenObject*> pTweenEngine::_pTweenObjects; 
+
+		// List of Tween Objects
+		std::list<pTweenObject*> pTweenEngine::_pTweenObjects;
 		double pTweenEngine::Timer;
 
 		void pTweenEngine::PauseAll()
@@ -76,7 +76,7 @@ namespace pTween {
 					if (pTobj->_HasStartCallBackOBJ) pTobj->_OnStartOBJ();
 					if (pTobj->_HasStartCallBack) pTobj->_OnStart();
 
-					if (!pTobj->_InitValueSet) 
+					if (!pTobj->_InitValueSet)
 					{
 						pTobj->_InitValue = *pTobj->_Data;
 						pTobj->_InitValueSet = true;
@@ -108,9 +108,9 @@ namespace pTween {
 
 						// Calculate Actual Time
 						pTobj->_Timer = Timer - pTobj->_StartTime - pTobj->_PauseTime;
-						
+
 							// Invert time for yoyo
-						if (pTobj->_YoYoPlaying) 
+						if (pTobj->_YoYoPlaying)
 							pTobj->_Timer = pTobj->_Duration - pTobj->_Timer;
 
 						if (Timer>pTobj->_StartTime && Timer<pTobj->_StartTime+pTobj->_Duration+pTobj->_PauseTime)
@@ -133,7 +133,7 @@ namespace pTween {
 							if (pTobj->_YoYo)
 							{
 								pTobj->_YoYoPlaying = true;
-								
+
 								// Set new Tween
 								pTobj->_Delay = 0;
 								pTobj->_PauseTime = 0;
@@ -155,7 +155,7 @@ namespace pTween {
 									*pTobj->_Data = pTobj->_EndValue;
 
 								pTobj->_YoYoPlaying = false;
-								
+
 								// End CallBack
 								if (pTobj->_HasEndCallBackOBJ) pTobj->_OnEndOBJ();
 								if (pTobj->_HasEndCallBack) pTobj->_OnEnd();

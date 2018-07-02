@@ -2,7 +2,7 @@
 // Name        : pTweenObject.h
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Object
 //============================================================================
 
@@ -168,7 +168,7 @@ namespace pTween {
 		};
 
 	};
-	
+
 };
 
 #endif /* PTWEENOBJECT_H */

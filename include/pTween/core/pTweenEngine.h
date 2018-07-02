@@ -2,7 +2,7 @@
 // Name        : pTweenEngine.h
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Engine
 //============================================================================
 
@@ -14,7 +14,7 @@
         #define PTWEEN_API __declspec(dllimport)
 
     #elif defined(_EXPORT)
-    
+
         #define PTWEEN_API __declspec(dllexport)
 
     #else

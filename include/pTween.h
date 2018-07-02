@@ -2,7 +2,7 @@
 // Name        : pTween.h
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween
 //============================================================================
 
@@ -53,7 +53,7 @@ namespace pTween {
 	inline void Destroy(pTweenObject* pTobj)
 	{
 		pTweenEngine::Destroy(pTobj);
-	}	
+	}
 };
 
 #endif /* PTWEEN_H */

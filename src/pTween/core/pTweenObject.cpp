@@ -2,7 +2,7 @@
 // Name        : pTweenObject.cpp
 // Author      : Duarte Peixinho
 // Version     : 0.1
-// Copyright   : ;) 
+// Copyright   : ;)
 // Description : pTween Object
 //============================================================================
 
@@ -54,7 +54,7 @@ namespace pTween {
 			_InitValueSet = true;
 			return this;
 		}
-		
+
 		// Final Value
 		pTweenObject* pTweenObject::To(const float &endValue)
 		{
@@ -161,7 +161,7 @@ namespace pTween {
 			_PauseTime				= 0;
 			_PauseStartTime			= 0;
 			_Transition				= 0; // Default Transition is Linear
-			if (!_InitValueSet) 
+			if (!_InitValueSet)
 			_InitValue				= *(float*)_Data;
 			_Ended					= false;
 			_Delay					= 0;
@@ -183,5 +183,5 @@ namespace pTween {
 		pTweenObject::~pTweenObject() {}
 
 	};
-	
+
 };
